@@ -25,15 +25,6 @@ return {
           -- Debug single nodejs files
           {
             type = "pwa-node",
-            request = "launch",
-            name = "Launch file",
-            program = "${file}",
-            cwd = vim.fn.getcwd(),
-            sourceMaps = true,
-          },
-          -- Debug nodejs processes (make sure to add --inspect when you run the process)
-          {
-            type = "pwa-node",
             request = "attach",
             name = "Attach",
             processId = require("dap.utils").pick_process,

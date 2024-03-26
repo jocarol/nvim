@@ -51,7 +51,12 @@ return {
       })
     end,
   },
-
+  { "EdenEast/nightfox.nvim", lazy = false, priority = 100 },
+  {
+    "zootedb0t/citruszest.nvim",
+    lazy = false,
+    priority = 1000,
+  },
   {
     "navarasu/onedark.nvim",
     lazy = false,

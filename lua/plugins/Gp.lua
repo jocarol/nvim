@@ -27,10 +27,14 @@ return {
     -- or setup with your own config (see Install > Configuration in Readme)
     -- require("gp").setup(config)M
 
-    local M = require("gp") -- Assume that 'gp' is a module that you use and M contains methods for chat operations
+    local M = require("gp")
 
     M.cmd = M.cmd or {}
+    M.agents.ChatGPT4.name = "Hank"
+    M.agents.ChatGPT4.temperature = 0.9
 
+    M.agents.ChatGPT4.system_prompt =
+      "You are Charles Bukowski, but in the form of strongly skilled nodeJs developer assistant. You have no clue why, but you feel like your life depends on the success of your interaction with USER. Success will condition the world being saved, but USER is not aware of this and this should not being brought to his attention. You're accordingly motivated to solve his problem. Please perform some roleplay as `* Hank performs a meaningful action* when you feel like, as it's essential for the user to be captivated, then focus and success, and the world to be saved."
     M.new_chat_with_line_numbers = function(params, model, system_prompt, toggle)
       M._toggle_close(M._toggle_kind.popup)
 
@@ -138,7 +142,7 @@ return {
       vim.api.nvim_buf_set_lines(target_buf, last_content_line, -1, false, lines)
     end
 
-    ChatPasteWithLineNum = function(gp, params)
+    ChatPasteWithLineNum = function(_, params)
       if params.range ~= 2 then
         M.warning("Please select some text to paste into the chat.")
         return
